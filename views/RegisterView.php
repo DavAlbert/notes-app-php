@@ -2,12 +2,12 @@
 <?php require 'partials/NavigationPartial.php'; ?>
 <body>
 <div class="container">
-    <? /** @var STRING[] $errors */
+    <?php /** @var STRING[] $errors */
     foreach ($errors as $error) { ?>
         <div class="alert alert-danger" role="alert">
             <?= $error ?>
         </div>
-    <? } ?>
+    <?php } ?>
     <form method="post">
         <h2 class="text-center">Register</h2>
         <div class="form-group">

@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <? /** @var STRING $loggedUser */
+            <?php /** @var STRING $loggedUser */
             if ($loggedUser) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/my">My Account</a>
@@ -20,14 +20,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
-            <? } else { ?>
+            <?php } else { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
-            <? } ?>
+            <?php } ?>
         </ul>
     </div>
 </nav>

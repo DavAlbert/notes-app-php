@@ -2,18 +2,18 @@
 <?php require 'partials/NavigationPartial.php'; ?>
 <body>
 <div class="container">
-    <? /** @var STRING[] $errors */
+    <?php /** @var STRING[] $errors */
     foreach ($errors as $error) { ?>
         <div class="alert alert-danger" role="alert">
             <?= $error ?>
         </div>
-    <? } ?>
-    <? /** @var BOOLEAN $successPassword */
+    <?php } ?>
+    <?php /** @var BOOLEAN $successPassword */
     if ($successPassword) { ?>
         <div class="alert alert-success" role="alert">
             Your password has been changed!
         </div>
-    <? } ?>
+    <?php } ?>
     <h1>Welcome <?= /** @var STRING $loggedUser */ htmlentities($loggedUser) ?></h1>
     <form method="post" action="/change-password">
         <h2 class="text-center">Change your password</h2>

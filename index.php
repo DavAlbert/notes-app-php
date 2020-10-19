@@ -6,7 +6,7 @@ use Models\NoticeModel;
 
 session_start();
 
-$request = preg_replace("|/*(.+?)/*$|", "\\1", $_SERVER['PATH_INFO']);
+$request = preg_replace("|/*(.+?)/*$|", "\\1", $_SERVER['REQUEST_URI']);
 $uri = explode('/', $request);
 
 

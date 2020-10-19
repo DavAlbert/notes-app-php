@@ -2,14 +2,14 @@
 <?php require 'partials/NavigationPartial.php'; ?>
 <body>
 <div class="container">
-    <? /** @var STRING[] $errors */
+    <?php /** @var STRING[] $errors */
     foreach ($errors as $error) { ?>
         <div class="alert alert-danger" role="alert">
             <?= $error ?>
         </div>
-    <? } ?>
+    <?php } ?>
     <h1>Your notices (<?= /** @var INTEGER $notices */ sizeof($notices)?>)</h1>
-    <? /** @var STRING[] $notices */ foreach ($notices as $notice) { ?>
+    <?php /** @var STRING[] $notices */ foreach ($notices as $notice) { ?>
     <div class="card mt-2">
         <div class="card-body">
             <p style="text-align: center;"><?= htmlentities($notice['text']) ?></p>
@@ -21,6 +21,6 @@
             </form>
         </div>
     </div>
-    <? } ?>
+    <?php } ?>
 </div>
 </body>
