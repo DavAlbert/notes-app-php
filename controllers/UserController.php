@@ -27,6 +27,7 @@ class UserController {
                 $data = $this->userModel->register($username, $password);
                 if ($data) {
                     $_SESSION['username'] = $username;
+                    session_regenerate_id();
                     header('Location: /my');
                     die;
                 }
@@ -50,6 +51,7 @@ class UserController {
                 $data = $this->userModel->login($username, $password);
                 if ($data) {
                     $_SESSION['username'] = $username;
+                    session_regenerate_id();
                     header('Location: /my');
                     die;
                 }
