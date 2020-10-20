@@ -1,4 +1,5 @@
 <?php
+
 class Database {
     protected $host = 'localhost:8889';
     protected $dbname = 'notes';

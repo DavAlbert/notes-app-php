@@ -1,12 +1,12 @@
 <?php require 'partials/HeaderPartial.php'; ?>
 <?php require 'partials/NavigationPartial.php'; ?>
+
 <body>
-<div class="container">
-    <?php /** @var STRING[] $errors */
-    foreach ($errors as $error) { ?>
-    <div class="alert alert-danger" role="alert">
-        <?= $error ?>
-    </div>
+    <div class="container">
+        <?php /** @var STRING[] $errors */ foreach ($errors as $error) { ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $error ?>
+            </div>
     <?php } ?>
     <form method="post">
         <h2 class="text-center">Login</h2>
@@ -22,4 +22,5 @@
         <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
 </div>
+<?php require 'partials/ScriptsPartial.php'; ?>
 </body>

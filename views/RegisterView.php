@@ -1,5 +1,6 @@
 <?php require 'partials/HeaderPartial.php'; ?>
 <?php require 'partials/NavigationPartial.php'; ?>
+
 <body>
 <div class="container">
     <?php /** @var STRING[] $errors */
@@ -22,4 +23,5 @@
         <button type="submit" class="btn btn-primary btn-block">Register</button>
     </form>
 </div>
+<?php require 'partials/ScriptsPartial.php'; ?>
 </body>
