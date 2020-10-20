@@ -22,4 +22,6 @@
         <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
 </div>
+
+    <?php require 'partials/ScriptsPartial.php'; ?>
 </body>

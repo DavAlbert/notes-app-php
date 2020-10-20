@@ -23,4 +23,6 @@
         <button type="submit" class="btn btn-primary btn-block">Create</button>
     </form>
 </div>
+
+    <?php require 'partials/ScriptsPartial.php'; ?>
 </body>

@@ -25,4 +25,6 @@
         <button type="submit" class="btn btn-primary btn-block">Change Password</button>
     </form>
 </div>
+
+    <?php require 'partials/ScriptsPartial.php'; ?>
 </body>
