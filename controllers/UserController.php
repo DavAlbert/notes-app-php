@@ -26,7 +26,7 @@ class UserController {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            if (isset($username) && isset($password) && sizeof($errors) == 0) {
+            if (isset($username) && isset($password)) {
                 $data = $this->userModel->register($username, $password);
 
                 if ($data) {
