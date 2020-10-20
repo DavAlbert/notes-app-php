@@ -12,7 +12,7 @@
         <h2 class="text-center">Login</h2>
         <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
         <div class="form-group">
-            <label for="email">Username:</label>
+            <label for="username">Username:</label>
             <input class="form-control" id="username" name="username" placeholder="Username">
         </div>
         <div class="form-group">
