@@ -16,6 +16,7 @@
         </div>
         <div class="card-footer">
             <form action="/notices/delete" method="POST">
+                <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
                 <input type="hidden" name="id" value="<?= $notice['id'] ?>">
                 <button type="submit" class="btn btn-danger float-right">Delete</button>
             </form>

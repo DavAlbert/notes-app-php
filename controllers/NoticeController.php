@@ -4,12 +4,14 @@ class NoticeController {
     protected $userModel = null;
     protected $noticeModel = null;
     protected $loginCheck = null;
+    protected $csrfCheck = null;
 
-    public function __construct($userModel, $noticeModel, $loginCheck)
+    public function __construct($userModel, $noticeModel, $loginCheck, $csrfCheck)
     {
         $this->userModel = $userModel;
         $this->noticeModel = $noticeModel;
         $this->loginCheck = $loginCheck;
+        $this->csrfCheck = $csrfCheck;
     }
 
     public function create() {
@@ -17,7 +19,9 @@ class NoticeController {
         $method = $_SERVER['REQUEST_METHOD'];
         $errors = [];
         $success = false;
+        $csrfInputField = $this->csrfCheck->generateTokenField();
         if ($method == 'POST') {
+            $this->csrfCheck->check();
             $text = $_POST['text'];
             $userId = $this->userModel->getId($loggedUser);
             if ($this->noticeModel->create($userId, $text)) {
@@ -38,13 +42,15 @@ class NoticeController {
         if ($method == 'POST') {
             $userId = $this->userModel->getId($loggedUser);
             $noticeId = $_POST['id'];
+            //$this->csrfCheck->check();
+            //TODO: The token in the cookie is different! Need to be fixed.
             if ($this->noticeModel->delete($userId, $noticeId)) {
                 $success = true;
             } else {
                 array_push($errors, 'Something went wrong.');
             }
         }
-        require 'views/NoticesView.php';
+        header('Location: /notices');
     }
 
     public function getAll() {
@@ -53,6 +59,7 @@ class NoticeController {
         $errors = [];
         $success = false;
         $notices = $this->noticeModel->showAll($userId);
+        $csrfInputField = $this->csrfCheck->generateTokenField();
         require 'views/NoticesView.php';
     }
 

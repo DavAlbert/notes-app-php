@@ -15,6 +15,7 @@
     <?php } ?>
     <form method="post">
         <h2 class="text-center">Create Notice</h2>
+        <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
         <div class="form-group">
             <label for="text">Text:</label>
             <textarea rows="10" class="form-control" id="text" name="text"></textarea>

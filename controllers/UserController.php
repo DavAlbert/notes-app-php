@@ -4,11 +4,13 @@ class UserController {
 
     protected $userModel = null;
     protected $loginCheck = null;
+    protected $csrfCheck = null;
 
-    public function __construct($userModel, $loginCheck)
+    public function __construct($userModel, $loginCheck, $csrfCheck)
     {
         $this->userModel = $userModel;
         $this->loginCheck = $loginCheck;
+        $this->csrfCheck = $csrfCheck;
     }
 
     public function register()
@@ -16,7 +18,9 @@ class UserController {
         $this->loginCheck->onlyForAnonymous();
         $method = $_SERVER['REQUEST_METHOD'];
         $errors = [];
+        $csrfInputField = $this->csrfCheck->generateTokenField();
         if ($method == 'POST') {
+            $this->csrfCheck->check();
             $username = $_POST['username'];
             $password = $_POST['password'];
             if (isset($username) && isset($password) && sizeof($errors) == 0) {
@@ -37,7 +41,9 @@ class UserController {
         $this->loginCheck->onlyForAnonymous();
         $method = $_SERVER['REQUEST_METHOD'];
         $errors = [];
+        $csrfInputField = $this->csrfCheck->generateTokenField();
         if ($method == 'POST') {
+            $this->csrfCheck->check();
             $username = $_POST['username'];
             $password = $_POST['password'];
             if (isset($username) && isset($password)) {
@@ -58,8 +64,10 @@ class UserController {
         $loggedUser = $this->loginCheck->check();
         $method = $_SERVER['REQUEST_METHOD'];
         $errors = [];
-        $success = false;
+        $success = $this->csrfCheck->generateTokenField();
+        $csrfInputField = $this->csrfCheck->generateTokenField();
         if ($method == 'POST') {
+            $this->csrfCheck->check();
             $password = $_POST['password'];
             $data = $this->userModel->changePassword($loggedUser, $password);
             if ($data) {
@@ -75,6 +83,7 @@ class UserController {
 
     public function my()
     {
+        $csrfInputField = $this->csrfCheck->generateTokenField();
         $loggedUser = $this->loginCheck->check();
         $errors = [];
         require 'views/MyView.php';

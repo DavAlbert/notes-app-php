@@ -1,6 +1,7 @@
 <?php
 
 use Middlewares\LoginCheckMiddleware;
+use Middlewares\CSRFProtectionMiddleware;
 use Models\UserModel;
 use Models\NoticeModel;
 
@@ -19,15 +20,17 @@ require_once "controllers/UserController.php";
 require_once "controllers/NoticeController.php";
 
 require_once "middlewares/LoginCheck.php";
+require_once "middlewares/CSRFProtection.php";
 
 $db = new Database();
 $loginCheck = new LoginCheckMiddleware();
+$csrfCheck = new CSRFProtectionMiddleware();
 $userModel = new UserModel($db);
 $noticeModel = new NoticeModel($db);
 
 $Controllers = [
-    'user' => new Controllers\UserController($userModel, $loginCheck),
-    'notice' => new Controllers\NoticeController($userModel, $noticeModel, $loginCheck)
+    'user' => new Controllers\UserController($userModel, $loginCheck, $csrfCheck),
+    'notice' => new Controllers\NoticeController($userModel, $noticeModel, $loginCheck, $csrfCheck)
 ];
 
 switch ($uri[0]) {

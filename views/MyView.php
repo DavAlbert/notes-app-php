@@ -20,6 +20,7 @@
         <div class="form-group">
             <label for="password">Password:</label>
             <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+            <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Change Password</button>
     </form>

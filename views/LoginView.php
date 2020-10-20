@@ -10,6 +10,7 @@
     <?php } ?>
     <form method="post">
         <h2 class="text-center">Login</h2>
+        <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
         <div class="form-group">
             <label for="email">Username:</label>
             <input class="form-control" id="username" name="username" placeholder="Username">
