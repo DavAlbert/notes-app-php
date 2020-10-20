@@ -18,9 +18,12 @@ class CSRFProtectionMiddleware {
         }
     }
 
+    /**
+     * @return string
+     */
     public function generateTokenField() {
         $key = sha1(time());
         setcookie('csrf', $key);
-        return '<input type="hidden" name="csrf-input" value="' . $key . '">';
+        return '<input type="hidden" name="csrf-input" value="' . $key . '"/>';
     }
 }

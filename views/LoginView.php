@@ -3,14 +3,14 @@
 
 <body>
     <div class="container">
-        <?php /** @var STRING[] $errors */ foreach ($errors as $error) { ?>
+        <?php /** @var array $errors */ foreach ($errors as $error) { ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error ?>
             </div>
     <?php } ?>
     <form method="post">
         <h2 class="text-center">Login</h2>
-        <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
+        <?= /** @var string $csrfInputField */ $csrfInputField ?>
         <div class="form-group">
             <label for="email">Username:</label>
             <input class="form-control" id="username" name="username" placeholder="Username">

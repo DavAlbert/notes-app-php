@@ -2,16 +2,31 @@
 
 namespace Models;
 
+use Database;
 use PDO;
 
 class UserModel {
+    /**
+     * @var Database $db
+     */
     protected $db;
 
+    /**
+     * UserModel constructor.
+     *
+     * @param Database $database
+     */
     public function __construct($database)
     {
         $this->db = $database;
     }
 
+    /**
+     * @param string $username
+     * @param string $password
+     *
+     * @return bool
+     */
     public function changePassword($username, $password)
     {
         $link = $this->db->open();
@@ -24,6 +39,12 @@ class UserModel {
         return $result;
     }
 
+    /**
+     * @param string $username
+     * @param string $password
+     *
+     * @return bool
+     */
     public function login($username, $password)
     {
         $link = $this->db->open();
@@ -35,6 +56,12 @@ class UserModel {
         return password_verify($password, $hashedPassword);
     }
 
+    /**
+     * @param string $username
+     * @param string $password
+     *
+     * @return bool
+     */
     public function register($username, $password)
     {
         $link = $this->db->open();
@@ -47,6 +74,11 @@ class UserModel {
         return $result;
     }
 
+    /**
+     * @param string $username
+     *
+     * @return integer
+     */
     public function getId($username)
     {
         $link = $this->db->open();

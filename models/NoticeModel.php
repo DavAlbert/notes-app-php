@@ -2,14 +2,30 @@
 
 namespace Models;
 
+use Database;
+
 class NoticeModel {
+    /**
+     * @var Database $db
+     */
     protected $db;
 
+    /**
+     * NoticeModel constructor.
+     *
+     * @param Database $database
+     */
     public function __construct($database)
     {
         $this->db = $database;
     }
 
+    /**
+     * @param integer $userId
+     * @param string $text
+     *
+     * @return bool
+     */
     public function create($userId, $text)
     {
         $link = $this->db->open();
@@ -21,6 +37,12 @@ class NoticeModel {
         return $result;
     }
 
+    /**
+     * @param integer $userId
+     * @param integer $id
+     *
+     * @return bool
+     */
     public function delete($userId, $id)
     {
         $link = $this->db->open();
@@ -32,11 +54,16 @@ class NoticeModel {
         return $result;
     }
 
+    /**
+     * @param integer $userId
+     *
+     * @return array
+     */
     public function showAll($userId) {
         $link = $this->db->open();
         $handle = $link->prepare('SELECT * FROM notices WHERE user_id = ?');
         $handle->bindValue(1, $userId);
-        $result = false;
+        $result = [];
 
         if ($handle->execute()) {
             $result = $handle->fetchAll();

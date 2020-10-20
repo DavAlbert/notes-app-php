@@ -2,12 +2,40 @@
 
 namespace Controllers;
 
-class NoticeController {
-    protected $userModel = null;
-    protected $noticeModel = null;
-    protected $loginCheck = null;
-    protected $csrfCheck = null;
+use Middlewares\CSRFProtectionMiddleware;
+use Middlewares\LoginCheckMiddleware;
+use Models\NoticeModel;
+use Models\UserModel;
 
+class NoticeController {
+    /**
+     * @var UserModel $userModel
+     */
+    protected $userModel;
+
+    /**
+     * @var NoticeModel $noticeModel
+     */
+    protected $noticeModel;
+
+    /**
+     * @var LoginCheckMiddleware $loginCheck
+     */
+    protected $loginCheck;
+
+    /**
+     * @var CSRFProtectionMiddleware $csrfCheck
+     */
+    protected $csrfCheck;
+
+    /**
+     * NoticeController constructor.
+     *
+     * @param UserModel $userModel
+     * @param NoticeModel $noticeModel
+     * @param LoginCheckMiddleware $loginCheck
+     * @param CSRFProtectionMiddleware $csrfCheck
+     */
     public function __construct($userModel, $noticeModel, $loginCheck, $csrfCheck)
     {
         $this->userModel = $userModel;

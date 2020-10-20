@@ -8,7 +8,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <?php /** @var STRING $loggedUser */ if ($loggedUser) { ?>
+            <?php /** @var string $loggedUser */ if ($loggedUser) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/my">My Account</a>
                 </li>

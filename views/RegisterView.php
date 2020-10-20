@@ -3,7 +3,7 @@
 
 <body>
 <div class="container">
-    <?php /** @var STRING[] $errors */
+    <?php /** @var array $errors */
     foreach ($errors as $error) { ?>
         <div class="alert alert-danger" role="alert">
             <?= $error ?>
@@ -11,7 +11,7 @@
     <?php } ?>
     <form method="post">
         <h2 class="text-center">Register</h2>
-        <?= /** @var STRING $csrfInputField */ $csrfInputField ?>
+        <?= /** @var string $csrfInputField */ $csrfInputField ?>
         <div class="form-group">
             <label for="username">Username:</label>
             <input class="form-control" id="username" name="username" placeholder="Username">
