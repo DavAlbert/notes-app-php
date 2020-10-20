@@ -1,4 +1,9 @@
-<?php namespace Models; use PDO;
+<?php
+
+namespace Models;
+
+use PDO;
+
 class UserModel {
     protected $db;
 
