@@ -29,7 +29,6 @@
             </div>
         <?php } ?>
     </div>
-    <?php } ?>
-</div>
-<?php require 'partials/ScriptsPartial.php'; ?>
+
+    <?php require 'partials/ScriptsPartial.php'; ?>
 </body>
