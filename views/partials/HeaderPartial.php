@@ -1,4 +1,7 @@
-<!DOCTYPE html><?php global $title?>
+<!DOCTYPE html>
+
+<?php global $title?>
+
 <html lang="en">
 <head>
     <meta charset="uft-8">

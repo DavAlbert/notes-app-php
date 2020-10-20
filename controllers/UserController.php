@@ -1,7 +1,8 @@
-<?php namespace Controllers;
+<?php
+
+namespace Controllers;
 
 class UserController {
-
     protected $userModel = null;
     protected $loginCheck = null;
     protected $csrfCheck = null;
@@ -19,21 +20,26 @@ class UserController {
         $method = $_SERVER['REQUEST_METHOD'];
         $errors = [];
         $csrfInputField = $this->csrfCheck->generateTokenField();
+
         if ($method == 'POST') {
             $this->csrfCheck->check();
             $username = $_POST['username'];
             $password = $_POST['password'];
+
             if (isset($username) && isset($password) && sizeof($errors) == 0) {
                 $data = $this->userModel->register($username, $password);
+
                 if ($data) {
                     $_SESSION['username'] = $username;
                     session_regenerate_id();
                     header('Location: /my');
                     die;
                 }
+
                 array_push($errors, 'Your username or password is invalid.');
             }
         }
+
         require 'views/RegisterView.php';
     }
 
@@ -43,21 +49,26 @@ class UserController {
         $method = $_SERVER['REQUEST_METHOD'];
         $errors = [];
         $csrfInputField = $this->csrfCheck->generateTokenField();
+
         if ($method == 'POST') {
             $this->csrfCheck->check();
             $username = $_POST['username'];
             $password = $_POST['password'];
+
             if (isset($username) && isset($password)) {
                 $data = $this->userModel->login($username, $password);
+
                 if ($data) {
                     $_SESSION['username'] = $username;
                     session_regenerate_id();
                     header('Location: /my');
                     die;
                 }
+
                 array_push($errors, 'Your username or password is not correct.');
             }
         }
+
         require 'views/LoginView.php';
     }
 
@@ -68,18 +79,22 @@ class UserController {
         $errors = [];
         $success = $this->csrfCheck->generateTokenField();
         $csrfInputField = $this->csrfCheck->generateTokenField();
+
         if ($method == 'POST') {
             $this->csrfCheck->check();
             $password = $_POST['password'];
             $data = $this->userModel->changePassword($loggedUser, $password);
+
             if ($data) {
                 $success = true;
             } else {
                 array_push($errors, 'Something went wrong.');
             }
+
             require 'views/MyView.php';
             die;
         }
+
         header('Location: /my');
     }
 

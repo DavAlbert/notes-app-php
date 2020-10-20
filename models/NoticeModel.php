@@ -1,4 +1,7 @@
-<?php namespace Models;
+<?php
+
+namespace Models;
+
 class NoticeModel {
     protected $db;
 
@@ -34,9 +37,11 @@ class NoticeModel {
         $handle = $link->prepare('SELECT * FROM notices WHERE user_id = ?');
         $handle->bindValue(1, $userId);
         $result = false;
+
         if ($handle->execute()) {
             $result = $handle->fetchAll();
         }
+
         $this->db->close();
         return $result;
     }
