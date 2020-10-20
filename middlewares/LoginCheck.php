@@ -3,6 +3,9 @@
 namespace Middlewares;
 
 class LoginCheckMiddleware {
+    /**
+     * @return string
+     */
     public function check() {
         $username = $_SESSION['username'];
 

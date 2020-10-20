@@ -2,11 +2,33 @@
 
 namespace Controllers;
 
-class UserController {
-    protected $userModel = null;
-    protected $loginCheck = null;
-    protected $csrfCheck = null;
+use Middlewares\CSRFProtectionMiddleware;
+use Middlewares\LoginCheckMiddleware;
+use Models\UserModel;
 
+class UserController {
+    /**
+     * @var UserModel $userModel
+     */
+    protected $userModel;
+
+    /**
+     * @var LoginCheckMiddleware $loginCheck
+     */
+    protected $loginCheck;
+
+    /**
+     * @var CSRFProtectionMiddleware $csrfCheck
+     */
+    protected $csrfCheck;
+
+    /**
+     * UserController constructor.
+     *
+     * @param UserModel $userModel
+     * @param LoginCheckMiddleware $loginCheck
+     * @param CSRFProtectionMiddleware $csrfCheck
+     */
     public function __construct($userModel, $loginCheck, $csrfCheck)
     {
         $this->userModel = $userModel;
